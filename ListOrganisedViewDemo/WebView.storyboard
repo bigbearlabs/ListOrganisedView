@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="QUk-Gw-a3k">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14306.4"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="14306.4"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="WMS-cU-NTK">
+            <objects>
+                <viewController id="QUk-Gw-a3k" sceneMemberID="viewController">
+                    <wkWebView key="view" wantsLayer="YES" allowsBackForwardNavigationGestures="YES" id="TmA-kp-SCc">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <wkWebViewConfiguration key="configuration">
+                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" audio="YES" video="YES"/>
+                            <wkPreferences key="preferences"/>
+                        </wkWebViewConfiguration>
+                        <connections>
+                            <outlet property="UIDelegate" destination="QUk-Gw-a3k" id="SpQ-aB-Aya"/>
+                            <outlet property="navigationDelegate" destination="QUk-Gw-a3k" id="4U2-Mo-s9Z"/>
+                        </connections>
+                    </wkWebView>
+                </viewController>
+                <customObject id="sFY-PP-G3E" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="442" y="177"/>
+        </scene>
+    </scenes>
+</document>

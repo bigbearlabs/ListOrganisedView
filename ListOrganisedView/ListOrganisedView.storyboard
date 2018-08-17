@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="EMB-6g-j7T">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--List Organised View Controller-->
+        <scene sceneID="8a6-Ae-5yd">
+            <objects>
+                <viewController id="EMB-6g-j7T" customClass="ListOrganisedViewController" customModule="ListOrganisedView" customModuleProvider="target" sceneMemberID="viewController">
+                    <splitView key="view" arrangesAllSubviews="NO" dividerStyle="thin" vertical="YES" id="pv9-bX-kGT">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView fixedFrame="YES" id="YIe-TG-RPI">
+                                <rect key="frame" x="0.0" y="0.0" width="119" height="300"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="7n8-SE-AXx" kind="embed" id="GMM-gX-Pr2"/>
+                                </connections>
+                            </containerView>
+                            <containerView fixedFrame="YES" id="Q1m-ck-zZ8">
+                                <rect key="frame" x="120" y="0.0" width="330" height="300"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="g59-EB-82b" kind="embed" id="pYC-fJ-ddG"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <holdingPriorities>
+                            <real value="490"/>
+                            <real value="250"/>
+                        </holdingPriorities>
+                        <connections>
+                            <outlet property="delegate" destination="EMB-6g-j7T" id="6IH-1r-Oe1"/>
+                        </connections>
+                    </splitView>
+                    <connections>
+                        <outlet property="splitView" destination="pv9-bX-kGT" id="Kuu-Qg-bNf"/>
+                    </connections>
+                </viewController>
+                <customObject id="CxQ-be-kiW" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="75" y="655"/>
+        </scene>
+        <!--Generic Collection View Controller-->
+        <scene sceneID="77Z-kl-0gE">
+            <objects>
+                <viewController id="7n8-SE-AXx" customClass="GenericCollectionViewController" customModule="ListOrganisedView" customModuleProvider="target" sceneMemberID="viewController">
+                    <scrollView key="view" wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="W9M-9A-0Wd">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <clipView key="contentView" drawsBackground="NO" id="S8Y-Wh-F78">
+                            <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <collectionView selectable="YES" id="7fk-jn-prY">
+                                    <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                    <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="n5Y-XV-Bqi">
+                                        <size key="itemSize" width="100" height="100"/>
+                                        <edgeInsets key="sectionInset" left="0.0" right="0.0" top="10" bottom="10"/>
+                                    </collectionViewFlowLayout>
+                                    <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <connections>
+                                        <outlet property="dataSource" destination="PE3-Ik-jG9" id="Vg5-C0-QaT"/>
+                                        <outlet property="delegate" destination="7n8-SE-AXx" id="P21-5P-8lm"/>
+                                    </connections>
+                                </collectionView>
+                            </subviews>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </clipView>
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Hdz-gG-EJh">
+                            <rect key="frame" x="-100" y="-100" width="233" height="15"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="zfm-T0-2jJ">
+                            <rect key="frame" x="234" y="1" width="15" height="143"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
+                    <connections>
+                        <outlet property="collectionView" destination="7fk-jn-prY" id="OGd-i6-QZy"/>
+                    </connections>
+                </viewController>
+                <customObject id="PE3-Ik-jG9" customClass="GenericCollectionViewDataSource" customModule="ListOrganisedView" customModuleProvider="target"/>
+                <customObject id="IMy-00-X2t" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-447" y="1085.5"/>
+        </scene>
+        <!--Detail-->
+        <scene sceneID="D4y-NS-Hnb">
+            <objects>
+                <viewController id="g59-EB-82b" userLabel="Detail" customClass="ContentViewController" customModule="ListOrganisedView" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabView key="view" type="noTabsNoBorder" id="Qgp-1T-KaE">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="Qgp-1T-KaE" id="WEM-N3-1a0"/>
+                    </connections>
+                </viewController>
+                <customObject id="Nau-jG-64N" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="75" y="1191"/>
+        </scene>
+    </scenes>
+</document>
