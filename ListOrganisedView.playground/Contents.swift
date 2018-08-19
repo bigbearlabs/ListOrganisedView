@@ -19,4 +19,6 @@ func testViewControllerInStoryboard() -> NSViewController? {
 }
 
 
-testViewControllerInStoryboard()
+let vc = testViewControllerInStoryboard()
+vc?.view
+

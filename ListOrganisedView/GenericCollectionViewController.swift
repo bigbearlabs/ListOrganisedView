@@ -42,18 +42,20 @@ public class GenericCollectionViewController: NSViewController {
   override public func viewWillAppear() {
     super.viewWillAppear()
     
-    guard collectionItemNib != nil,
-      onSelect != nil,
-      itemModels != nil
-    else {
-      fatalError("\(self) not fully set up.")
-    }
+//    guard collectionItemNib != nil,
+//      onSelect != nil,
+//      itemModels != nil
+//    else {
+//      fatalError("\(self) not fully set up.")
+//    }
     
     // trigger the didSets.
-    let items = self.itemModels
-    self.itemModels = items
-    let nib = self.collectionItemNib
-    self.collectionItemNib = nib
+    if let items = self.itemModels {
+      self.itemModels = items
+    }
+    if let nib = self.collectionItemNib {
+      self.collectionItemNib = nib
+    }
     
   }
 
@@ -99,7 +101,7 @@ extension GenericCollectionViewController: NSCollectionViewDelegate {
     // invoke its action.
     // invokeAction(object: modelObject)
     
-    self.onSelect?(modelObject, self)
+    self.onSelect!(modelObject, self)
   }
   
 }

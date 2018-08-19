@@ -3,18 +3,24 @@ import WebKit
 
 
 
-public class ListOrganisedViewController: NSViewController {
+open class ListOrganisedViewController: NSViewController {
  
-  public var itemModels: [GenericCollectionItemModel]!
+  public var itemModels: [GenericCollectionItemModel] = []
   
-  public var listWidth: CGFloat!
   
   public var onSelect: ((_ model: GenericCollectionItemModel, _ viewController: GenericCollectionViewController) -> ())?
+  
+
+  public var listWidth: CGFloat = 20
+  
+  lazy public var collectionItemNib: NSNib? = {
+    return NSNib(nibNamed: NSNib.Name.init("SidebarItem"), bundle: Bundle(for: type(of: self)))  // usage-example
+  }()
   
   @IBOutlet weak var splitView: NSSplitView!
   
   
-  public override func viewWillAppear() {
+  open override func viewWillAppear() {
     super.viewWillAppear()
     
     setup(sidebarVc: sidebarVc)
@@ -26,7 +32,7 @@ public class ListOrganisedViewController: NSViewController {
   }
   
   func setup(sidebarVc: GenericCollectionViewController) {
-    sidebarVc.collectionItemNib = NSNib(nibNamed: NSNib.Name.init("SidebarItem"), bundle: Bundle(for: type(of: self)))  // usage-example
+    sidebarVc.collectionItemNib = self.collectionItemNib
     sidebarVc.onSelect = self.onSelect
     sidebarVc.itemModels = self.itemModels
   }
