@@ -2,7 +2,7 @@ import Cocoa
 
 
 
-public class GenericCollectionItemModel: NSObject {
+open class GenericCollectionItemModel: NSObject {
   @objc dynamic
   public var id: String = "stub-id"
   @objc dynamic
