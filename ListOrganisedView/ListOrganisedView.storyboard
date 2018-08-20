@@ -18,7 +18,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="119" height="300"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <segue destination="7n8-SE-AXx" kind="embed" id="GMM-gX-Pr2"/>
+                                    <segue destination="Chc-YS-J2s" kind="embed" id="pIa-fx-im1"/>
                                 </connections>
                             </containerView>
                             <containerView fixedFrame="YES" id="Q1m-ck-zZ8">
@@ -45,49 +45,13 @@
             </objects>
             <point key="canvasLocation" x="-505" y="632"/>
         </scene>
-        <!--Generic Collection View Controller-->
-        <scene sceneID="77Z-kl-0gE">
+        <!--GenericCollectionView-->
+        <scene sceneID="35h-2U-ZSH">
             <objects>
-                <viewController id="7n8-SE-AXx" customClass="GenericCollectionViewController" customModule="ListOrganisedView" customModuleProvider="target" sceneMemberID="viewController">
-                    <scrollView key="view" wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="W9M-9A-0Wd">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <clipView key="contentView" drawsBackground="NO" id="S8Y-Wh-F78">
-                            <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <collectionView selectable="YES" id="7fk-jn-prY">
-                                    <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                    <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="ZJK-NN-psF">
-                                        <size key="itemSize" width="50" height="50"/>
-                                    </collectionViewFlowLayout>
-                                    <color key="primaryBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    <connections>
-                                        <outlet property="dataSource" destination="PE3-Ik-jG9" id="Vg5-C0-QaT"/>
-                                        <outlet property="delegate" destination="7n8-SE-AXx" id="P21-5P-8lm"/>
-                                    </connections>
-                                </collectionView>
-                            </subviews>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Hdz-gG-EJh">
-                            <rect key="frame" x="-100" y="-100" width="233" height="15"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="zfm-T0-2jJ">
-                            <rect key="frame" x="234" y="1" width="15" height="143"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                    </scrollView>
-                    <connections>
-                        <outlet property="collectionView" destination="7fk-jn-prY" id="OGd-i6-QZy"/>
-                    </connections>
-                </viewController>
-                <customObject id="PE3-Ik-jG9" customClass="GenericCollectionViewDataSource" customModule="ListOrganisedView" customModuleProvider="target"/>
-                <customObject id="IMy-00-X2t" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <controllerPlaceholder storyboardName="GenericCollectionView" id="Chc-YS-J2s" sceneMemberID="viewController"/>
+                <customObject id="Ngp-j6-X3w" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-520" y="1132"/>
+            <point key="canvasLocation" x="-637" y="1042"/>
         </scene>
         <!--Detail-->
         <scene sceneID="D4y-NS-Hnb">
@@ -104,7 +68,7 @@
                 </viewController>
                 <customObject id="Nau-jG-64N" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="12" y="1124"/>
+            <point key="canvasLocation" x="-505" y="1387"/>
         </scene>
     </scenes>
 </document>
