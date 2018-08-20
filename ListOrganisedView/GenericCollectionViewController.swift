@@ -17,14 +17,14 @@ open class GenericCollectionItemModel: NSObject {
 public class GenericCollectionViewController: NSViewController {
   
   
-  var itemModels: [GenericCollectionItemModel]! {
+  public var itemModels: [GenericCollectionItemModel]! {
     didSet {
       (collectionView?.dataSource as? GenericCollectionViewDataSource)?.itemModels = self.itemModels
       collectionView?.reloadData()
     }
   }
   
-  var collectionItemNib: NSNib? {
+  public var collectionItemNib: NSNib? {
     didSet {
       self.collectionView?.register(
         collectionItemNib!,
@@ -33,9 +33,9 @@ public class GenericCollectionViewController: NSViewController {
     }
   }
   
-  var onSelect: ((_ modelObject: GenericCollectionItemModel, _ vc: GenericCollectionViewController) -> ())?
+  public var onSelect: ((_ modelObject: GenericCollectionItemModel, _ vc: GenericCollectionViewController) -> ())?
   
-  var itemHeight: CGFloat = 80  // reasonable default.
+  public var itemHeight: CGFloat = 80  // reasonable default.
   
   
   @IBOutlet
@@ -58,9 +58,8 @@ public class GenericCollectionViewController: NSViewController {
     if let items = self.itemModels {
       self.itemModels = items
     }
-    if let nib = self.collectionItemNib {
-      self.collectionItemNib = nib
-    }
+    let nib = self.collectionItemNib
+    self.collectionItemNib = nib!
     
   }
 
