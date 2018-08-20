@@ -5,6 +5,7 @@ import WebKit
 
 open class ListOrganisedViewController: NSViewController {
  
+  
   // data.
   
   public var itemModels: [GenericCollectionItemModel] = [] {
@@ -28,6 +29,7 @@ open class ListOrganisedViewController: NSViewController {
     }
   }
   
+  
   // split view config.
   
   public var listWidth: CGFloat = 20
@@ -35,6 +37,8 @@ open class ListOrganisedViewController: NSViewController {
   
   @IBOutlet weak var splitView: NSSplitView!
   
+  
+  // MARK: -
   
   open override func viewWillAppear() {
     super.viewWillAppear()
@@ -66,12 +70,7 @@ open class ListOrganisedViewController: NSViewController {
   }
   
   
-  var sidebarCollectionViewController: GenericCollectionViewController {
-    return self.childViewControllers.compactMap {
-      $0 as? GenericCollectionViewController
-      }
-      .last!
-  }
+  var sidebarCollectionViewController: GenericCollectionViewController!
   
   var contentViewController: ContentViewController {
     return self.childViewControllers.compactMap {
@@ -80,6 +79,13 @@ open class ListOrganisedViewController: NSViewController {
       .last!
   }
   
+  open override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+    if let vc = segue.destinationController as? GenericCollectionViewController {
+      self.sidebarCollectionViewController = vc
+    }
+    
+    super.prepare(for: segue, sender: sender)
+  }
 }
 
 

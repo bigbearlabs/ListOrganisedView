@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5102DABE2121C7D800EEF9F0 /* WebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51E5B7CC211244C200913D35 /* WebView.storyboard */; };
+		5155B704212B721600A72BC7 /* GenericCollectionView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5155B703212B721600A72BC7 /* GenericCollectionView.storyboard */; };
 		51C88581211214D1002A8B67 /* ListOrganisedView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 515C724F2112103F00CADBF6 /* ListOrganisedView.storyboard */; };
 		51C88582211214D4002A8B67 /* SidebarItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 515C72252112054700CADBF6 /* SidebarItem.xib */; };
 		51C885A921121679002A8B67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C885A821121679002A8B67 /* AppDelegate.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5155B703212B721600A72BC7 /* GenericCollectionView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GenericCollectionView.storyboard; sourceTree = "<group>"; };
 		515C72252112054700CADBF6 /* SidebarItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SidebarItem.xib; sourceTree = "<group>"; };
 		515C722E21120F8D00CADBF6 /* ListOrganisedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListOrganisedView.h; sourceTree = "<group>"; };
 		515C722F21120F8D00CADBF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -89,9 +91,10 @@
 			children = (
 				515C724F2112103F00CADBF6 /* ListOrganisedView.storyboard */,
 				51E5B7CA2112281E00913D35 /* ListOrganisedViewController.swift */,
+				51E5B7D02112FBC800913D35 /* ContentViewController.swift */,
+				5155B703212B721600A72BC7 /* GenericCollectionView.storyboard */,
 				515C72252112054700CADBF6 /* SidebarItem.xib */,
 				51E5B7CE2112520100913D35 /* GenericCollectionViewController.swift */,
-				51E5B7D02112FBC800913D35 /* ContentViewController.swift */,
 				515C722E21120F8D00CADBF6 /* ListOrganisedView.h */,
 				515C722F21120F8D00CADBF6 /* Info.plist */,
 			);
@@ -237,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				51C88581211214D1002A8B67 /* ListOrganisedView.storyboard in Resources */,
+				5155B704212B721600A72BC7 /* GenericCollectionView.storyboard in Resources */,
 				51C88582211214D4002A8B67 /* SidebarItem.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

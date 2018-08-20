@@ -38,8 +38,11 @@ public class GenericCollectionViewController: NSViewController {
   var itemHeight: CGFloat = 80  // reasonable default.
   
   
-  @IBOutlet weak var collectionView: NSCollectionView?
+  @IBOutlet
+  weak var collectionView: NSCollectionView?
   
+  @IBOutlet
+  var collectionViewDataSource: GenericCollectionViewDataSource?
   
   override public func viewWillAppear() {
     super.viewWillAppear()
@@ -113,6 +116,8 @@ extension GenericCollectionViewController: NSCollectionViewDelegateFlowLayout {
     return NSSize(width: collectionView.bounds.size.width, height: self.itemHeight)
   }
 }
+
+
 
 class GenericCollectionViewDataSource: NSObject, NSCollectionViewDataSource {
   
