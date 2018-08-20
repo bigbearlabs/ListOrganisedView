@@ -5,17 +5,33 @@ import WebKit
 
 open class ListOrganisedViewController: NSViewController {
  
-  public var itemModels: [GenericCollectionItemModel] = []
+  // data.
   
-  
-  public var onSelect: ((_ model: GenericCollectionItemModel, _ viewController: GenericCollectionViewController) -> ())?
+  public var itemModels: [GenericCollectionItemModel] = [] {
+    didSet {
+      sidebarCollectionViewController.itemModels = self.itemModels
+    }
+  }
   
 
-  public var listWidth: CGFloat = 20
+  // collection view config.
+  
+  public var onSelect: ((_ model: GenericCollectionItemModel, _ viewController: GenericCollectionViewController) -> ())?
   
   lazy public var collectionItemNib: NSNib? = {
     return NSNib(nibNamed: NSNib.Name.init("SidebarItem"), bundle: Bundle(for: type(of: self)))  // usage-example
   }()
+
+  public var itemHeight: CGFloat = 80 {
+    didSet {
+      sidebarCollectionViewController.itemHeight = self.itemHeight
+    }
+  }
+  
+  // split view config.
+  
+  public var listWidth: CGFloat = 20
+  
   
   @IBOutlet weak var splitView: NSSplitView!
   
@@ -23,7 +39,7 @@ open class ListOrganisedViewController: NSViewController {
   open override func viewWillAppear() {
     super.viewWillAppear()
     
-    setup(sidebarVc: sidebarVc)
+    setup(sidebarVc: sidebarCollectionViewController)
     setup(splitView: splitView)
   }
   
@@ -48,7 +64,15 @@ open class ListOrganisedViewController: NSViewController {
       initialiseViewControllerForModel: initialiseViewControllerForModel,
       completionHandler: completionHandler)
   }
-    
+  
+  
+  var sidebarCollectionViewController: GenericCollectionViewController {
+    return self.childViewControllers.compactMap {
+      $0 as? GenericCollectionViewController
+      }
+      .last!
+  }
+  
   var contentViewController: ContentViewController {
     return self.childViewControllers.compactMap {
       $0 as? ContentViewController
@@ -56,19 +80,13 @@ open class ListOrganisedViewController: NSViewController {
       .last!
   }
   
-  var sidebarVc: GenericCollectionViewController {
-    return self.childViewControllers.compactMap {
-      $0 as? GenericCollectionViewController
-      }
-      .last!
-  }
 }
 
 
 extension ListOrganisedViewController: NSSplitViewDelegate {
  
   public func splitView(_ splitView: NSSplitView, shouldAdjustSizeOfSubview view: NSView) -> Bool {
-    if view === sidebarVc.view.superview {
+    if view === sidebarCollectionViewController.view.superview {
       return false
     }
     

@@ -35,6 +35,8 @@ public class GenericCollectionViewController: NSViewController {
   
   var onSelect: ((_ modelObject: GenericCollectionItemModel, _ vc: GenericCollectionViewController) -> ())?
   
+  var itemHeight: CGFloat = 80  // reasonable default.
+  
   
   @IBOutlet weak var collectionView: NSCollectionView?
   
@@ -106,6 +108,11 @@ extension GenericCollectionViewController: NSCollectionViewDelegate {
   
 }
 
+extension GenericCollectionViewController: NSCollectionViewDelegateFlowLayout {
+  public func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
+    return NSSize(width: collectionView.bounds.size.width, height: self.itemHeight)
+  }
+}
 
 class GenericCollectionViewDataSource: NSObject, NSCollectionViewDataSource {
   
