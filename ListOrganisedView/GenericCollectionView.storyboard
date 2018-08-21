@@ -11,14 +11,14 @@
             <objects>
                 <viewController id="iY8-TX-L4D" customClass="GenericCollectionViewController" customModule="ListOrganisedView" customModuleProvider="target" sceneMemberID="viewController">
                     <scrollView key="view" wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="5Vs-i2-K7H">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="306" height="236"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" drawsBackground="NO" id="kYm-f1-PCf">
-                            <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                            <rect key="frame" x="0.0" y="0.0" width="306" height="236"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <collectionView selectable="YES" id="36B-S1-mvT">
-                                    <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="306" height="300"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                     <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="nHw-Au-xDI">
                                         <size key="itemSize" width="50" height="50"/>
@@ -36,8 +36,8 @@
                             <rect key="frame" x="-100" y="-100" width="233" height="15"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="9yc-53-0y3">
-                            <rect key="frame" x="234" y="1" width="15" height="143"/>
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="9yc-53-0y3">
+                            <rect key="frame" x="290" y="0.0" width="16" height="236"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
@@ -49,7 +49,7 @@
                 <customObject id="7Ci-ZD-b2i" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <customObject id="hF3-fc-HfC" customClass="GenericCollectionViewDataSource" customModule="ListOrganisedView" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="-520" y="1132"/>
+            <point key="canvasLocation" x="-592" y="1100"/>
         </scene>
     </scenes>
 </document>

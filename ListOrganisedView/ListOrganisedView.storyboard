@@ -11,18 +11,18 @@
             <objects>
                 <viewController id="EMB-6g-j7T" customClass="ListOrganisedViewController" customModule="ListOrganisedView" customModuleProvider="target" sceneMemberID="viewController">
                     <splitView key="view" arrangesAllSubviews="NO" dividerStyle="thin" vertical="YES" id="pv9-bX-kGT">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView fixedFrame="YES" id="YIe-TG-RPI">
-                                <rect key="frame" x="0.0" y="0.0" width="119" height="300"/>
+                                <rect key="frame" x="0.0" y="0.0" width="119" height="600"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="Chc-YS-J2s" kind="embed" id="pIa-fx-im1"/>
                                 </connections>
                             </containerView>
                             <containerView fixedFrame="YES" id="Q1m-ck-zZ8">
-                                <rect key="frame" x="120" y="0.0" width="330" height="300"/>
+                                <rect key="frame" x="120" y="0.0" width="330" height="600"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="g59-EB-82b" kind="embed" id="pYC-fJ-ddG"/>
