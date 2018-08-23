@@ -19,6 +19,8 @@ open class ListOrganisedViewController: NSViewController {
   
   public var onSelect: ((_ model: GenericCollectionItemModel, _ viewController: GenericCollectionViewController) -> ())?
   
+  public var onDoubleClick: ((_ model: GenericCollectionItemModel, _ viewController: GenericCollectionViewController) -> ())?
+
   lazy public var collectionItemNib: NSNib? = {
     return NSNib(nibNamed: NSNib.Name.init("SidebarItem"), bundle: Bundle(for: type(of: self)))  // usage-example
   }()
@@ -54,6 +56,7 @@ open class ListOrganisedViewController: NSViewController {
   func setup(sidebarVc: GenericCollectionViewController) {
     sidebarVc.collectionItemNib = self.collectionItemNib
     sidebarVc.onSelect = self.onSelect
+    sidebarVc.onDoubleClick = self.onDoubleClick
     sidebarVc.itemModels = self.itemModels
   }
   

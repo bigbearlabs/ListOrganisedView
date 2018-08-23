@@ -34,7 +34,9 @@ public class GenericCollectionViewController: NSViewController {
   }
   
   public var onSelect: ((_ modelObject: GenericCollectionItemModel, _ vc: GenericCollectionViewController) -> ())?
-  
+
+  public var onDoubleClick: ((_ modelObject: GenericCollectionItemModel, _ vc: GenericCollectionViewController) -> ())?
+
   public var itemHeight: CGFloat = 80  // reasonable default.
   
   
@@ -88,9 +90,9 @@ public class GenericCollectionViewController: NSViewController {
 }
 
 
+// MARK: - delegate
+
 extension GenericCollectionViewController: NSCollectionViewDelegate {
-  
-  // MARK: - delegate
   
   public func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
     
@@ -105,7 +107,7 @@ extension GenericCollectionViewController: NSCollectionViewDelegate {
     // invoke its action.
     // invokeAction(object: modelObject)
     
-    self.onSelect!(modelObject, self)
+    self.onSelect?(modelObject, self)
   }
   
 }
@@ -131,9 +133,18 @@ class GenericCollectionViewDataSource: NSObject, NSCollectionViewDataSource {
   
   func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
 
+    let viewModel = self.viewModel(indexPath: indexPath)
+    
     // precondition: nib registered with same item id.
     let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "DefaultCollectionViewItem"), for: indexPath)
-    item.representedObject = viewModel(indexPath: indexPath)
+    item.representedObject = viewModel
+    
+    item.view.onDoubleClick = item.view.onDoubleClick
+      ?? {
+      let vc = collectionView.delegate as! GenericCollectionViewController
+      vc.onDoubleClick!(viewModel, vc)
+    }
+    
     return item
   }
   
@@ -147,4 +158,68 @@ class GenericCollectionViewDataSource: NSObject, NSCollectionViewDataSource {
     return itemModels?.count ?? 0
   }
   
+}
+
+
+class DoubleClickGestureRecognizer: NSClickGestureRecognizer {
+  
+  let closureHolder: ClosureHolder
+  
+  init(onAction: @escaping () -> ()) {
+    let closureHolder = ClosureHolder(onAction: onAction)
+    self.closureHolder = closureHolder
+    super.init(target: nil, action: #selector(actionInvoked(_:)))
+    
+    self.target = self
+    self.numberOfClicksRequired = 2
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  @IBAction
+  private func actionInvoked(_ sender: Any?) {
+    self.closureHolder.onAction()
+  }
+  
+
+  class ClosureHolder: NSObject {
+    
+    let onAction:  () -> ()
+    
+    init(onAction: @escaping () -> ()) {
+      self.onAction = onAction
+    }
+    
+  }
+
+}
+
+
+
+
+extension NSView {
+  
+  var onDoubleClick: (() -> ())? {
+    get {
+      let rs = self.gestureRecognizers.compactMap { $0 as? DoubleClickGestureRecognizer }
+      if let r = rs.first {
+        return r.closureHolder.onAction
+      }
+      return nil
+    }
+    set {
+      guard let onDoubleClick = newValue else {
+        return
+      }
+      
+      let recogniser = DoubleClickGestureRecognizer(onAction: onDoubleClick)
+      recogniser.numberOfClicksRequired = 2
+
+      self.gestureRecognizers =
+        self.gestureRecognizers.filter { !($0 is DoubleClickGestureRecognizer) }
+        + [ recogniser ]
+    }
+  }
 }
