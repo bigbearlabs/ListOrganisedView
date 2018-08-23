@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5102DABE2121C7D800EEF9F0 /* WebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51E5B7CC211244C200913D35 /* WebView.storyboard */; };
 		5155B704212B721600A72BC7 /* GenericCollectionView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5155B703212B721600A72BC7 /* GenericCollectionView.storyboard */; };
+		51751A39212ED8D500281B2A /* NSView_onDoubleClick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51751A38212ED8D500281B2A /* NSView_onDoubleClick.swift */; };
 		51C88581211214D1002A8B67 /* ListOrganisedView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 515C724F2112103F00CADBF6 /* ListOrganisedView.storyboard */; };
 		51C88582211214D4002A8B67 /* SidebarItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 515C72252112054700CADBF6 /* SidebarItem.xib */; };
 		51C885A921121679002A8B67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C885A821121679002A8B67 /* AppDelegate.swift */; };
@@ -52,6 +53,7 @@
 		515C722E21120F8D00CADBF6 /* ListOrganisedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListOrganisedView.h; sourceTree = "<group>"; };
 		515C722F21120F8D00CADBF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		515C724F2112103F00CADBF6 /* ListOrganisedView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ListOrganisedView.storyboard; sourceTree = "<group>"; };
+		51751A38212ED8D500281B2A /* NSView_onDoubleClick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSView_onDoubleClick.swift; sourceTree = "<group>"; };
 		51C8856E211213EE002A8B67 /* ListOrganisedView.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ListOrganisedView.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		51C8857421121491002A8B67 /* ListOrganisedView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ListOrganisedView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51C885A621121679002A8B67 /* ListOrganisedViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListOrganisedViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,6 +97,7 @@
 				5155B703212B721600A72BC7 /* GenericCollectionView.storyboard */,
 				515C72252112054700CADBF6 /* SidebarItem.xib */,
 				51E5B7CE2112520100913D35 /* GenericCollectionViewController.swift */,
+				51751A38212ED8D500281B2A /* NSView_onDoubleClick.swift */,
 				515C722E21120F8D00CADBF6 /* ListOrganisedView.h */,
 				515C722F21120F8D00CADBF6 /* Info.plist */,
 			);
@@ -264,6 +267,7 @@
 			files = (
 				51E5B7CB2112281E00913D35 /* ListOrganisedViewController.swift in Sources */,
 				51E5B7D12112FBC800913D35 /* ContentViewController.swift in Sources */,
+				51751A39212ED8D500281B2A /* NSView_onDoubleClick.swift in Sources */,
 				51E5B7CF2112520100913D35 /* GenericCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

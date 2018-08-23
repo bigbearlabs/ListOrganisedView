@@ -49,20 +49,13 @@ public class GenericCollectionViewController: NSViewController {
   override public func viewWillAppear() {
     super.viewWillAppear()
     
-//    guard collectionItemNib != nil,
-//      onSelect != nil,
-//      itemModels != nil
-//    else {
-//      fatalError("\(self) not fully set up.")
-//    }
-    
     // trigger the didSets.
-    if let items = self.itemModels {
-      self.itemModels = items
-    }
+    
+    let items = self.itemModels
+    self.itemModels = items
+
     let nib = self.collectionItemNib
     self.collectionItemNib = nib!
-    
   }
 
   @IBAction func action_addListItem(_ sender: Any) {
@@ -158,68 +151,4 @@ class GenericCollectionViewDataSource: NSObject, NSCollectionViewDataSource {
     return itemModels?.count ?? 0
   }
   
-}
-
-
-class DoubleClickGestureRecognizer: NSClickGestureRecognizer {
-  
-  let closureHolder: ClosureHolder
-  
-  init(onAction: @escaping () -> ()) {
-    let closureHolder = ClosureHolder(onAction: onAction)
-    self.closureHolder = closureHolder
-    super.init(target: nil, action: #selector(actionInvoked(_:)))
-    
-    self.target = self
-    self.numberOfClicksRequired = 2
-  }
-  
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-  
-  @IBAction
-  private func actionInvoked(_ sender: Any?) {
-    self.closureHolder.onAction()
-  }
-  
-
-  class ClosureHolder: NSObject {
-    
-    let onAction:  () -> ()
-    
-    init(onAction: @escaping () -> ()) {
-      self.onAction = onAction
-    }
-    
-  }
-
-}
-
-
-
-
-extension NSView {
-  
-  var onDoubleClick: (() -> ())? {
-    get {
-      let rs = self.gestureRecognizers.compactMap { $0 as? DoubleClickGestureRecognizer }
-      if let r = rs.first {
-        return r.closureHolder.onAction
-      }
-      return nil
-    }
-    set {
-      guard let onDoubleClick = newValue else {
-        return
-      }
-      
-      let recogniser = DoubleClickGestureRecognizer(onAction: onDoubleClick)
-      recogniser.numberOfClicksRequired = 2
-
-      self.gestureRecognizers =
-        self.gestureRecognizers.filter { !($0 is DoubleClickGestureRecognizer) }
-        + [ recogniser ]
-    }
-  }
 }
