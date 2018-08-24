@@ -14,10 +14,14 @@ open class ListOrganisedViewController: NSViewController {
     }
   }
   
-
+  public var selectedItemModels: [GenericCollectionItemModel] {
+    return sidebarCollectionViewController.selectedItemModels
+  }
+  
+  
   // collection view config.
   
-  public var onSelect: ((_ model: GenericCollectionItemModel, _ viewController: GenericCollectionViewController) -> ())?
+  public var onSelect: ((_ models: [GenericCollectionItemModel], _ viewController: GenericCollectionViewController) -> ())?
   
   public var onDoubleClick: ((_ model: GenericCollectionItemModel, _ viewController: GenericCollectionViewController) -> ())?
 

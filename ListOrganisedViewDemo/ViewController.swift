@@ -40,12 +40,15 @@ class ViewController: NSViewController {
       }(),
     ]
     
-    self.listOrganisedViewController.onSelect = { [unowned self] model, viewController in
-      self.onSelect(model, viewController)
+    self.listOrganisedViewController.onSelect = { [unowned self] models, viewController in
+      self.onSelect(models, viewController)
     }
   }
 
-  func onSelect(_ model: GenericCollectionItemModel, _ viewController: GenericCollectionViewController) {
+  func onSelect(_ models: [GenericCollectionItemModel], _ viewController: GenericCollectionViewController) {
+    guard models.count < 2 else { fatalError() }
+    guard let model = models.first else { return }
+    
     self.listOrganisedViewController.showViewFor(
       modelObject: model,
       initialiseViewControllerForModel: {

@@ -33,11 +33,26 @@ public class GenericCollectionViewController: NSViewController {
     }
   }
   
-  public var onSelect: ((_ modelObject: GenericCollectionItemModel, _ vc: GenericCollectionViewController) -> ())?
+  public var onSelect: ((_ modelObjects: [GenericCollectionItemModel], _ vc: GenericCollectionViewController) -> ())?
 
   public var onDoubleClick: ((_ modelObject: GenericCollectionItemModel, _ vc: GenericCollectionViewController) -> ())?
 
   public var itemHeight: CGFloat = 80  // reasonable default.
+  
+  
+  
+  public var selectedItemModels: [GenericCollectionItemModel] {
+    let indexes = self.collectionView!.selectionIndexes
+    let items = indexes.map {
+      self.collectionView!.item(at: $0)
+    }
+    
+    let models = items.map {
+      $0?.representedObject as! GenericCollectionItemModel
+    }
+    
+    return models
+  }
   
   
   @IBOutlet
@@ -88,21 +103,14 @@ public class GenericCollectionViewController: NSViewController {
 extension GenericCollectionViewController: NSCollectionViewDelegate {
   
   public func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
-    
-    guard indexPaths.count == 1,
-      let indexPath = indexPaths.reversed().first
-      else { fatalError() }
-    
-    // find the view model object for the list item.
-    let selectedItem = collectionView.item(at: indexPath)
-    let modelObject = selectedItem!.representedObject as! GenericCollectionItemModel
-    
-    // invoke its action.
-    // invokeAction(object: modelObject)
-    
-    self.onSelect?(modelObject, self)
+    let modelObjects = self.selectedItemModels
+    self.onSelect?(modelObjects, self)
   }
   
+  public func collectionView(_ collectionView: NSCollectionView, didDeselectItemsAt indexPaths: Set<IndexPath>) {
+    let modelObjects = self.selectedItemModels
+    self.onSelect?(modelObjects, self)
+  }
 }
 
 extension GenericCollectionViewController: NSCollectionViewDelegateFlowLayout {
