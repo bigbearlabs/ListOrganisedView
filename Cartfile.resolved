@@ -1,1 +1,2 @@
-github "ra1028/DifferenceKit" "0.5.3"
+github "RACCommunity/FlexibleDiff" "0.0.5"
+github "jspahrsummers/xcconfigs" "0.12"

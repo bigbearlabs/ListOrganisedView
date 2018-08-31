@@ -8,12 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		5102DABE2121C7D800EEF9F0 /* WebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51E5B7CC211244C200913D35 /* WebView.storyboard */; };
+		511281CB21396B6B009C6308 /* FlexibleDiff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 511281CA21396B62009C6308 /* FlexibleDiff.framework */; };
+		511281CC21396B72009C6308 /* FlexibleDiff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 511281CA21396B62009C6308 /* FlexibleDiff.framework */; };
+		511281CD21396B72009C6308 /* FlexibleDiff.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 511281CA21396B62009C6308 /* FlexibleDiff.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5155B704212B721600A72BC7 /* GenericCollectionView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5155B703212B721600A72BC7 /* GenericCollectionView.storyboard */; };
 		51751A39212ED8D500281B2A /* NSView_onDoubleClick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51751A38212ED8D500281B2A /* NSView_onDoubleClick.swift */; };
-		519C629821394F2300406991 /* DifferenceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 519C629721394F2200406991 /* DifferenceKit.framework */; };
-		519C629921394F2300406991 /* DifferenceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 519C629721394F2200406991 /* DifferenceKit.framework */; };
-		519C629A21394F8100406991 /* DifferenceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 519C629721394F2200406991 /* DifferenceKit.framework */; };
-		519C629B21394F8100406991 /* DifferenceKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 519C629721394F2200406991 /* DifferenceKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		51C88581211214D1002A8B67 /* ListOrganisedView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 515C724F2112103F00CADBF6 /* ListOrganisedView.storyboard */; };
 		51C88582211214D4002A8B67 /* SidebarItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 515C72252112054700CADBF6 /* SidebarItem.xib */; };
 		51C885A921121679002A8B67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C885A821121679002A8B67 /* AppDelegate.swift */; };
@@ -44,7 +43,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				519C629B21394F8100406991 /* DifferenceKit.framework in Embed Frameworks */,
+				511281CD21396B72009C6308 /* FlexibleDiff.framework in Embed Frameworks */,
 				51C885C1211224C3002A8B67 /* ListOrganisedView.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -53,13 +52,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		511281CA21396B62009C6308 /* FlexibleDiff.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FlexibleDiff.framework; path = Carthage/Build/Mac/FlexibleDiff.framework; sourceTree = "<group>"; };
 		5155B703212B721600A72BC7 /* GenericCollectionView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GenericCollectionView.storyboard; sourceTree = "<group>"; };
 		515C72252112054700CADBF6 /* SidebarItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SidebarItem.xib; sourceTree = "<group>"; };
 		515C722E21120F8D00CADBF6 /* ListOrganisedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListOrganisedView.h; sourceTree = "<group>"; };
 		515C722F21120F8D00CADBF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		515C724F2112103F00CADBF6 /* ListOrganisedView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ListOrganisedView.storyboard; sourceTree = "<group>"; };
 		51751A38212ED8D500281B2A /* NSView_onDoubleClick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSView_onDoubleClick.swift; sourceTree = "<group>"; };
-		519C629721394F2200406991 /* DifferenceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DifferenceKit.framework; path = Carthage/Build/Mac/DifferenceKit.framework; sourceTree = "<group>"; };
 		51C8856E211213EE002A8B67 /* ListOrganisedView.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ListOrganisedView.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		51C8857421121491002A8B67 /* ListOrganisedView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ListOrganisedView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51C885A621121679002A8B67 /* ListOrganisedViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListOrganisedViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,7 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				519C629821394F2300406991 /* DifferenceKit.framework in Frameworks */,
+				511281CB21396B6B009C6308 /* FlexibleDiff.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,9 +87,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				519C629921394F2300406991 /* DifferenceKit.framework in Frameworks */,
+				511281CC21396B72009C6308 /* FlexibleDiff.framework in Frameworks */,
 				51C885C0211224C3002A8B67 /* ListOrganisedView.framework in Frameworks */,
-				519C629A21394F8100406991 /* DifferenceKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,7 +148,7 @@
 		51C885B9211223F0002A8B67 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				519C629721394F2200406991 /* DifferenceKit.framework */,
+				511281CA21396B62009C6308 /* FlexibleDiff.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
