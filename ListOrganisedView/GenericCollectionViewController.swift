@@ -1,6 +1,25 @@
 import Cocoa
+import DifferenceKit
 
 
+
+//extension GenericCollectionItemModel where Self: Differentiable {
+//
+//}
+
+struct DiffableElement: Differentiable {
+  var differenceIdentifier: String {
+    return model.id
+  }
+  
+  func isContentEqual(to source: DiffableElement) -> Bool {
+    return "\(source.model.dictionaryRepresentation)" == "\(self.model.dictionaryRepresentation)"
+  }
+  
+  typealias DifferenceIdentifier = String
+  
+  let model: GenericCollectionItemModel
+}
 
 
 
@@ -12,15 +31,47 @@ public protocol GenericCollectionItemModel {
   var dictionaryRepresentation: [String : Any?] { get }
 }
 
-
+extension ElementPath {
+  var indexPath: IndexPath {
+    return IndexPath(item: self.element, section: self.section)
+  }
+}
 
 public class GenericCollectionViewController: NSViewController {
   
   
-  public var itemModels: [GenericCollectionItemModel]! {
+  public var itemModels: [GenericCollectionItemModel] = [] {
     didSet {
       (collectionView?.dataSource as? GenericCollectionViewDataSource)?.itemModels = self.itemModels
-      collectionView?.reloadData()
+      
+      if oldValue.isEmpty {
+        // first load
+        collectionView?.reloadData()
+        return
+      }
+      
+      let (old, new) = (
+        oldValue.map { DiffableElement(model: $0) },
+        itemModels.map { DiffableElement(model: $0) }
+      )
+      
+      let changeSet = StagedChangeset(source: old, target: new)
+      
+      for changes in changeSet {
+
+        collectionView?.deleteItems(
+          at: Set(changes.elementDeleted.map { $0.indexPath }))
+        
+        collectionView?.insertItems(
+          at: Set(changes.elementInserted.map { $0.indexPath }))
+        
+        collectionView?.reloadItems(
+          at: Set(changes.elementUpdated.map { $0.indexPath }))
+        
+        for (source, target) in changes.elementMoved {
+          collectionView?.moveItem( at: source.indexPath, to: target.indexPath)
+        }
+      }
     }
   }
   
