@@ -2,14 +2,14 @@ import Cocoa
 
 
 
-open class GenericCollectionItemModel: NSObject {
-  @objc dynamic
-  public var id: String = "stub-id"
-  @objc dynamic
-  public var title: String = "stub-title"
-  //  @objc dynamic
-  //  var icon: NSImage! = nil
-  public var tooltipText: String = "stub-tooltip-text"
+
+
+public protocol GenericCollectionItemModel {
+  var id: String { get }
+  var title: String? { get }
+  var tooltipText: String? { get }
+  
+  var dictionaryRepresentation: [String : Any?] { get }
 }
 
 
@@ -42,13 +42,9 @@ public class GenericCollectionViewController: NSViewController {
   
   
   public var selectedItemModels: [GenericCollectionItemModel] {
-    let indexes = self.collectionView!.selectionIndexes
-    let items = indexes.map {
-      self.collectionView!.item(at: $0)
-    }
-    
-    let models = items.map {
-      $0?.representedObject as! GenericCollectionItemModel
+    let indexes = self.collectionView!.selectionIndexPaths
+    let models = indexes.map {
+      (self.collectionView!.dataSource as! GenericCollectionViewDataSource).viewModel(indexPath: $0)
     }
     
     return models
@@ -138,7 +134,7 @@ class GenericCollectionViewDataSource: NSObject, NSCollectionViewDataSource {
     
     // precondition: nib registered with same item id.
     let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "DefaultCollectionViewItem"), for: indexPath)
-    item.representedObject = viewModel
+    item.representedObject = viewModel.dictionaryRepresentation
     
     item.view.onDoubleClick = item.view.onDoubleClick
       ?? {

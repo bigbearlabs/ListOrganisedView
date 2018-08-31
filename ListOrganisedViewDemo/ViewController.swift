@@ -1,8 +1,23 @@
 import Cocoa
 import ListOrganisedView
+
 import WebKit
 
 
+class CollectionItemModel: GenericCollectionItemModel, Codable {
+  var id: String = "stub-id"
+  
+  var title: String? = nil
+  
+  var tooltipText: String? = nil
+  
+  var dictionaryRepresentation: [String : Any?] {
+    return
+      try! JSONSerialization.jsonObject(
+        with: try! JSONEncoder().encode(self),
+        options: []) as! [String : Any?]
+  }
+}
 
 class ViewController: NSViewController {
 
@@ -15,25 +30,25 @@ class ViewController: NSViewController {
     
     self.listOrganisedViewController.itemModels = [
       {
-        let o = GenericCollectionItemModel()
+        let o = CollectionItemModel()
         o.id = "Google"
         o.title = "Google"
         return o
       }(),
       {
-        let o = GenericCollectionItemModel()
+        let o = CollectionItemModel()
         o.id = "GitHub"
         o.title = "GitHub"
         return o
       }(),
       {
-        let o = GenericCollectionItemModel()
+        let o = CollectionItemModel()
         o.id = "Twitter"
         o.title = "Twitter"
         return o
       }(),
       {
-        let o = GenericCollectionItemModel()
+        let o = CollectionItemModel()
         o.id = "MacRumors"
         o.title = "MacRumors"
         return o
