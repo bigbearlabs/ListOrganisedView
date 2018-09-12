@@ -11,11 +11,22 @@ open class ListOrganisedViewController: NSViewController {
   public var itemModels: [GenericCollectionItemModel] = [] {
     didSet {
       sidebarCollectionViewController.itemModels = self.itemModels
+      
+      // select the first one by default.
+      if self.selectedItemModels.isEmpty,
+        let firstItemModel = self.itemModels.first {
+        self.selectedItemModels = [ firstItemModel ]
+      }
     }
   }
   
   public var selectedItemModels: [GenericCollectionItemModel] {
-    return sidebarCollectionViewController.selectedItemModels
+    get {
+      return sidebarCollectionViewController.selectedItemModels
+    }
+    set {
+      sidebarCollectionViewController.selectedItemModels = newValue
+    }
   }
   
   

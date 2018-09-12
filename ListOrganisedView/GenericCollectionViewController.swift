@@ -8,6 +8,8 @@ public protocol GenericCollectionItemModel {
   var tooltipText: String? { get }
 
   var dictionaryRepresentation: [String : Any?] { get }
+  
+  func isEqual(to: GenericCollectionItemModel) -> Bool
 }
 
 
@@ -67,7 +69,13 @@ public class GenericCollectionViewController: NSViewController {
     }
   }
 
-  public var onSelect: ((_ modelObjects: [GenericCollectionItemModel], _ vc: GenericCollectionViewController) -> ())?
+  public var onSelect: ((_ modelObjects: [GenericCollectionItemModel], _ vc: GenericCollectionViewController) -> ())? {
+    didSet {
+      if self.selectedItemModels.count > 0 {
+        self.onSelect?(self.selectedItemModels, self)
+      }
+    }
+  }
 
   public var onDoubleClick: ((_ modelObject: GenericCollectionItemModel, _ vc: GenericCollectionViewController) -> ())?
 
@@ -76,12 +84,33 @@ public class GenericCollectionViewController: NSViewController {
 
 
   public var selectedItemModels: [GenericCollectionItemModel] {
-    let indexes = self.collectionView!.selectionIndexPaths
-    let models = indexes.map {
-      (self.collectionView!.dataSource as! GenericCollectionViewDataSource).viewModel(indexPath: $0)
-    }
+    get {
+      let indexes = self.collectionView!.selectionIndexPaths
+      let models = indexes.map {
+        (self.collectionView!.dataSource as! GenericCollectionViewDataSource).viewModel(indexPath: $0)
+      }
 
-    return models
+      return models
+    }
+    set {
+      let collectionView = self.collectionView!
+      let models = (collectionView.dataSource as! GenericCollectionViewDataSource).itemModels!
+      
+      let selectionIndices = newValue.compactMap { selectedModel in
+        models.index {
+          $0.isEqual(to: selectedModel)
+        }
+      }
+      
+      let indexPaths = selectionIndices.map {
+        IndexPath(item: $0, section: 0)
+      }
+      let indexPathSet = Set(indexPaths)
+      
+      collectionView.selectItems(at: indexPathSet, scrollPosition: .top)
+      // call the handler.
+      self.onSelect?(newValue, self)
+    }
   }
 
 
