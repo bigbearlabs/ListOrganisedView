@@ -11,6 +11,7 @@
 		511281CB21396B6B009C6308 /* FlexibleDiff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 511281CA21396B62009C6308 /* FlexibleDiff.framework */; };
 		511281CC21396B72009C6308 /* FlexibleDiff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 511281CA21396B62009C6308 /* FlexibleDiff.framework */; };
 		511281CD21396B72009C6308 /* FlexibleDiff.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 511281CA21396B62009C6308 /* FlexibleDiff.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		512D125D214A7477006197B2 /* CustomCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512D125C214A7477006197B2 /* CustomCollectionView.swift */; };
 		5155B704212B721600A72BC7 /* GenericCollectionView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5155B703212B721600A72BC7 /* GenericCollectionView.storyboard */; };
 		51751A39212ED8D500281B2A /* NSView_onDoubleClick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51751A38212ED8D500281B2A /* NSView_onDoubleClick.swift */; };
 		51C88581211214D1002A8B67 /* ListOrganisedView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 515C724F2112103F00CADBF6 /* ListOrganisedView.storyboard */; };
@@ -53,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		511281CA21396B62009C6308 /* FlexibleDiff.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FlexibleDiff.framework; path = Carthage/Build/Mac/FlexibleDiff.framework; sourceTree = "<group>"; };
+		512D125C214A7477006197B2 /* CustomCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionView.swift; sourceTree = "<group>"; };
 		5155B703212B721600A72BC7 /* GenericCollectionView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GenericCollectionView.storyboard; sourceTree = "<group>"; };
 		515C72252112054700CADBF6 /* SidebarItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SidebarItem.xib; sourceTree = "<group>"; };
 		515C722E21120F8D00CADBF6 /* ListOrganisedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListOrganisedView.h; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 		515C722D21120F8D00CADBF6 /* ListOrganisedView */ = {
 			isa = PBXGroup;
 			children = (
+				512D125C214A7477006197B2 /* CustomCollectionView.swift */,
 				515C724F2112103F00CADBF6 /* ListOrganisedView.storyboard */,
 				51E5B7CA2112281E00913D35 /* ListOrganisedViewController.swift */,
 				51E5B7D02112FBC800913D35 /* ContentViewController.swift */,
@@ -273,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				512D125D214A7477006197B2 /* CustomCollectionView.swift in Sources */,
 				51E5B7CB2112281E00913D35 /* ListOrganisedViewController.swift in Sources */,
 				51E5B7D12112FBC800913D35 /* ContentViewController.swift in Sources */,
 				51751A39212ED8D500281B2A /* NSView_onDoubleClick.swift in Sources */,

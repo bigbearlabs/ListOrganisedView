@@ -4,12 +4,31 @@ import ListOrganisedView
 import WebKit
 
 
-class CollectionItemModel: GenericCollectionItemModel, Codable {
+struct CollectionItemModel: GenericCollectionItemModel, Codable, Equatable {
+  
+  func isEqual(to: GenericCollectionItemModel) -> Bool {
+    if let other = to as? CollectionItemModel {
+      return self == other
+    }
+    return false
+  }
+  
   var id: String = "stub-id"
+  
+  var url: URL
   
   var title: String? = nil
   
   var tooltipText: String? = nil
+  
+  
+  init(id: String, url: URL, title: String? = nil, tooltipText: String? = nil) {
+    self.id = id
+    self.url = url
+    self.title = title
+    self.tooltipText = tooltipText
+  }
+  
   
   var dictionaryRepresentation: [String : Any?] {
     return
@@ -17,6 +36,7 @@ class CollectionItemModel: GenericCollectionItemModel, Codable {
         with: try! JSONEncoder().encode(self),
         options: []) as! [String : Any?]
   }
+
 }
 
 class ViewController: NSViewController {
@@ -30,27 +50,31 @@ class ViewController: NSViewController {
     
     self.listOrganisedViewController.itemModels = [
       {
-        let o = CollectionItemModel()
-        o.id = "Google"
-        o.title = "Google"
+        let o = CollectionItemModel(
+          id: "google",
+          url: URL(string: "https://google.com")!,
+          title: "Google")
         return o
       }(),
       {
-        let o = CollectionItemModel()
-        o.id = "GitHub"
-        o.title = "GitHub"
+        let o = CollectionItemModel(
+          id: "GitHub",
+          url: URL(string: "https://github.com")!,
+          title: "GitHub")
         return o
       }(),
       {
-        let o = CollectionItemModel()
-        o.id = "Twitter"
-        o.title = "Twitter"
+        let o = CollectionItemModel(
+          id: "Twitter",
+          url: URL(string: "https://twitter.com")!,
+          title: "Twitter")
         return o
       }(),
       {
-        let o = CollectionItemModel()
-        o.id = "MacRumors"
-        o.title = "MacRumors"
+        let o = CollectionItemModel(
+          id: "MacRumors",
+          url: URL(string: "https://macrumors.com")!,
+          title: "MacRumors")
         return o
       }(),
     ]
@@ -62,7 +86,7 @@ class ViewController: NSViewController {
 
   func onSelect(_ models: [GenericCollectionItemModel], _ viewController: GenericCollectionViewController) {
     guard models.count < 2 else { fatalError() }
-    guard let model = models.first else { return }
+    guard let model = models.first as? CollectionItemModel else { return }
     
     self.listOrganisedViewController.showViewFor(
       modelObject: model,
@@ -77,17 +101,12 @@ class ViewController: NSViewController {
       // instruct the vc.
       
       let webView = viewControllerForModel.view as! WKWebView
-      let url = self.url(model: model)
+      let url = model.url
       webView.load(URLRequest(url: url))
       
     }
   }
   
-  func url(model: GenericCollectionItemModel) -> URL {
-    return URL(string: "https://google.com")!  // stub!
-  }
-  
-
 
   override var representedObject: Any? {
     didSet {

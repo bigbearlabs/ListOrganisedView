@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="iY8-TX-L4D">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="iY8-TX-L4D">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.13.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,7 +17,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="306" height="236"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <collectionView selectable="YES" id="36B-S1-mvT">
+                                <collectionView selectable="YES" id="36B-S1-mvT" customClass="CustomCollectionView" customModule="ListOrganisedView" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="306" height="300"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                     <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="nHw-Au-xDI">
