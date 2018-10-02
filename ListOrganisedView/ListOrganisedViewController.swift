@@ -37,7 +37,7 @@ open class ListOrganisedViewController: NSViewController {
   public var onDoubleClick: ((_ model: GenericCollectionItemModel, _ viewController: GenericCollectionViewController) -> ())?
 
   lazy public var collectionItemNib: NSNib? = {
-    return NSNib(nibNamed: NSNib.Name.init("SidebarItem"), bundle: Bundle(for: type(of: self)))  // usage-example
+    return NSNib(nibNamed: "SidebarItem", bundle: Bundle(for: type(of: self)))  // usage-example
   }()
 
   public var itemHeight: CGFloat = 80 {
@@ -91,7 +91,7 @@ open class ListOrganisedViewController: NSViewController {
   var sidebarCollectionViewController: GenericCollectionViewController!
   
   var contentViewController: ContentViewController {
-    return self.childViewControllers.compactMap {
+    return self.children.compactMap {
       $0 as? ContentViewController
       }
       .last!
