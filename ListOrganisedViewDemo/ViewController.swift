@@ -115,13 +115,13 @@ class ViewController: NSViewController {
   }
 
   var listOrganisedViewController: ListOrganisedViewController {
-    return self.childViewControllers.compactMap { $0 as? ListOrganisedViewController}.last!
+    return self.children.compactMap { $0 as? ListOrganisedViewController}.last!
   }
 }
 
 
 
-func controllerFromStoryboard(name: String, bundle: Bundle? = nil) -> Any? {
-  let storyboard = NSStoryboard(name: NSStoryboard.Name(name), bundle: bundle)
+func controllerFromStoryboard(name: NSStoryboard.Name, bundle: Bundle? = nil) -> Any? {
+  let storyboard = NSStoryboard(name: name, bundle: bundle)
   return storyboard.instantiateInitialController()
 }
