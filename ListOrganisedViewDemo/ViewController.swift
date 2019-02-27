@@ -122,6 +122,6 @@ class ViewController: NSViewController {
 
 
 func controllerFromStoryboard(name: String, bundle: Bundle? = nil) -> Any? {
-  let storyboard = NSStoryboard(name: NSStoryboard.Name(rawValue: name), bundle: bundle)
+  let storyboard = NSStoryboard(name: NSStoryboard.Name(name), bundle: bundle)
   return storyboard.instantiateInitialController()
 }
