@@ -196,7 +196,7 @@ class GenericCollectionViewDataSource: NSObject, NSCollectionViewDataSource {
     let viewModel = self.viewModel(indexPath: indexPath)
 
     // precondition: nib registered with same item id.
-    let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "DefaultCollectionViewItem"), for: indexPath)
+    let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "SidebarItem"), for: indexPath)
     item.representedObject = viewModel.dictionaryRepresentation
 
     item.view.onDoubleClick = item.view.onDoubleClick
