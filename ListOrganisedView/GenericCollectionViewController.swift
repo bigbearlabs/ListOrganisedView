@@ -202,7 +202,11 @@ class GenericCollectionViewDataSource: NSObject, NSCollectionViewDataSource {
     item.view.onDoubleClick = item.view.onDoubleClick
       ?? {
       let vc = collectionView.delegate as! GenericCollectionViewController
-      vc.onDoubleClick!(viewModel, vc)
+        if let handler = vc.onDoubleClick {
+          handler(viewModel, vc)
+        } else {
+          print("WARN: no double click handler for \((vc, viewModel))")
+        }
     }
 
     return item
