@@ -4,46 +4,21 @@ import ListOrganisedView
 import WebKit
 
 
-struct CollectionItemModel: GenericCollectionItemModel, Codable, Equatable {
-  
-  func isEqual(to: GenericCollectionItemModel) -> Bool {
-    if let other = to as? CollectionItemModel {
-      return self == other
-    }
-    return false
-  }
-  
-  var id: String = "stub-id"
-  
-  var url: URL
-  
-  var title: String? = nil
-  
-  var tooltipText: String? = nil
-  
-  
-  init(id: String, url: URL, title: String? = nil, tooltipText: String? = nil) {
-    self.id = id
-    self.url = url
-    self.title = title
-    self.tooltipText = tooltipText
-  }
-  
-  
-  var dictionaryRepresentation: [String : Any?] {
-    return
-      try! JSONSerialization.jsonObject(
-        with: try! JSONEncoder().encode(self),
-        options: []) as! [String : Any?]
-  }
-
-}
-
 class ViewController: NSViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    setupListOrganisedViewController()
+  }
+  
+}
+
+// MARK: -
+
+extension ViewController {
+  
+  func setupListOrganisedViewController() {
     self.listOrganisedViewController.listWidth =
 //      self.listOrganisedViewController.view.frame.size.width
       80
@@ -79,12 +54,10 @@ class ViewController: NSViewController {
       }(),
     ]
     
-    self.listOrganisedViewController.onSelect = { [unowned self] models, viewController in
-      self.onSelect(models, viewController)
-    }
+    self.listOrganisedViewController.onSelect = self.onSelect
   }
 
-  func onSelect(_ models: [GenericCollectionItemModel], _ viewController: GenericCollectionViewController) {
+  func onSelect(models: [GenericCollectionItemModel], viewController: GenericCollectionViewController) {
     guard models.count < 2 else { fatalError() }
     guard let model = models.first as? CollectionItemModel else { return }
     
@@ -96,8 +69,7 @@ class ViewController: NSViewController {
           bundle: Bundle(for: type(of: self))
           ) as! NSViewController
         return viewControllerForModel
-    }
-    ) { viewControllerForModel in
+    }) { viewControllerForModel in
       // instruct the vc.
       
       let webView = viewControllerForModel.view as! WKWebView
@@ -108,18 +80,50 @@ class ViewController: NSViewController {
   }
   
 
-  override var representedObject: Any? {
-    didSet {
-    // Update the view, if already loaded.
-    }
-  }
-
   var listOrganisedViewController: ListOrganisedViewController {
     return self.children.compactMap { $0 as? ListOrganisedViewController}.last!
   }
+  
+}
+
+struct CollectionItemModel: GenericCollectionItemModel, Codable, Equatable {
+  
+  func isEqual(to: GenericCollectionItemModel) -> Bool {
+    if let other = to as? CollectionItemModel {
+      return self == other
+    }
+    return false
+  }
+  
+  var id: String = "stub-id"
+  
+  var url: URL
+  
+  var title: String? = nil
+  
+  var tooltipText: String? = nil
+  
+  
+  init(id: String, url: URL, title: String? = nil, tooltipText: String? = nil) {
+    self.id = id
+    self.url = url
+    self.title = title
+    self.tooltipText = tooltipText
+  }
+  
+  
+  var dictionaryRepresentation: [String : Any?] {
+    return
+      try! JSONSerialization.jsonObject(
+        with: try! JSONEncoder().encode(self),
+        options: []) as! [String : Any?]
+  }
+  
 }
 
 
+
+// MARK: -
 
 func controllerFromStoryboard(name: NSStoryboard.Name, bundle: Bundle? = nil) -> Any? {
   let storyboard = NSStoryboard(name: name, bundle: bundle)
