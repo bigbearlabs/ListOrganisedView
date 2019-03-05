@@ -60,8 +60,8 @@ open class ListOrganisedViewController: NSViewController {
   open override func viewWillAppear() {
     super.viewWillAppear()
     
-    setup(sidebarVc: sidebarCollectionViewController)
-    setup(splitView: splitView)
+    setup(sidebarVc: self.sidebarCollectionViewController)
+    setup(splitView: self.splitView)
   }
   
   func setup(splitView: NSSplitView) {

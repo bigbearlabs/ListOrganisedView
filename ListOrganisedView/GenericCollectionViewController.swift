@@ -105,9 +105,9 @@ public class GenericCollectionViewController: NSViewController {
       let indexPaths = selectionIndices.map {
         IndexPath(item: $0, section: 0)
       }
-      let indexPathSet = Set(indexPaths)
-      
-      collectionView.selectItems(at: indexPathSet, scrollPosition: .top)
+
+      collectionView.selectionIndexPaths = Set(indexPaths)
+
       // call the handler.
       self.onSelect?(newValue, self)
     }
