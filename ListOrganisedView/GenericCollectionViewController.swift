@@ -64,7 +64,7 @@ public class GenericCollectionViewController: NSViewController {
     didSet {
       self.collectionView?.register(
         collectionItemNib!,
-        forItemWithIdentifier: NSUserInterfaceItemIdentifier(rawValue: "DefaultCollectionViewItem")
+        forItemWithIdentifier: NSUserInterfaceItemIdentifier(rawValue: "SidebarItem")
       )
     }
   }
