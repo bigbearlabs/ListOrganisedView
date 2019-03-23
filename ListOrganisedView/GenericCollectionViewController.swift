@@ -64,7 +64,7 @@ public class GenericCollectionViewController: NSViewController {
     didSet {
       self.collectionView?.register(
         collectionItemNib!,
-        forItemWithIdentifier: NSUserInterfaceItemIdentifier(rawValue: "SidebarItem")
+        forItemWithIdentifier: NSUserInterfaceItemIdentifier(rawValue: GenericCollectionViewController.collectionItemIdentifier)
       )
     }
   }
@@ -154,6 +154,10 @@ public class GenericCollectionViewController: NSViewController {
   // further down the line: re-order
 
   // further down the line: drag-drop
+  
+  
+  static let collectionItemIdentifier = "CollectionItemNib"
+
 }
 
 
@@ -196,7 +200,7 @@ class GenericCollectionViewDataSource: NSObject, NSCollectionViewDataSource {
     let viewModel = self.viewModel(indexPath: indexPath)
 
     // precondition: nib registered with same item id.
-    let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "SidebarItem"), for: indexPath)
+    let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: GenericCollectionViewController.collectionItemIdentifier), for: indexPath)
     item.representedObject = viewModel.dictionaryRepresentation
 
     item.view.onDoubleClick = {
