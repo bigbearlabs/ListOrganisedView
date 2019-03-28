@@ -199,15 +199,16 @@ class GenericCollectionViewDataSource: NSObject, NSCollectionViewDataSource {
     let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "SidebarItem"), for: indexPath)
     item.representedObject = viewModel.dictionaryRepresentation
 
-    item.view.onDoubleClick = item.view.onDoubleClick
-      ?? {
+    item.view.onDoubleClick = {
       let vc = collectionView.delegate as! GenericCollectionViewController
-        if let handler = vc.onDoubleClick {
-          handler(viewModel, vc)
-        } else {
-          print("WARN: no double click handler for \((vc, viewModel))")
-        }
+      if let handler = vc.onDoubleClick {
+        handler(viewModel, vc)
+      } else {
+        print("WARN: no double click handler for \((vc, viewModel))")
+      }
     }
+    // improve: potentially a lot of transient closures are inited here.
+    // consider assigning a longer-lived double-click handler with e.g. selected model param obtained from the view's state instead.
 
     return item
   }
