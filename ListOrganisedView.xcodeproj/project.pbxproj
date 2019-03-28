@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5102DABE2121C7D800EEF9F0 /* WebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51E5B7CC211244C200913D35 /* WebView.storyboard */; };
+		51097447224CFF8300808E94 /* CollectionItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51097446224CFF8300808E94 /* CollectionItemModel.swift */; };
 		511281CB21396B6B009C6308 /* FlexibleDiff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 511281CA21396B62009C6308 /* FlexibleDiff.framework */; };
 		511281CC21396B72009C6308 /* FlexibleDiff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 511281CA21396B62009C6308 /* FlexibleDiff.framework */; };
 		511281CD21396B72009C6308 /* FlexibleDiff.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 511281CA21396B62009C6308 /* FlexibleDiff.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -53,6 +54,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		51097446224CFF8300808E94 /* CollectionItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionItemModel.swift; sourceTree = "<group>"; };
 		511281CA21396B62009C6308 /* FlexibleDiff.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FlexibleDiff.framework; path = Carthage/Build/Mac/FlexibleDiff.framework; sourceTree = "<group>"; };
 		512D125C214A7477006197B2 /* CustomCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionView.swift; sourceTree = "<group>"; };
 		5155B703212B721600A72BC7 /* GenericCollectionView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GenericCollectionView.storyboard; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				51C885AE2112167A002A8B67 /* Main.storyboard */,
 				51C885A821121679002A8B67 /* AppDelegate.swift */,
 				51C885AA21121679002A8B67 /* ViewController.swift */,
+				51097446224CFF8300808E94 /* CollectionItemModel.swift */,
 				51E5B7CC211244C200913D35 /* WebView.storyboard */,
 				51C885AC2112167A002A8B67 /* Assets.xcassets */,
 				51C885B12112167A002A8B67 /* Info.plist */,
@@ -291,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				51C885AB21121679002A8B67 /* ViewController.swift in Sources */,
+				51097447224CFF8300808E94 /* CollectionItemModel.swift in Sources */,
 				51C885A921121679002A8B67 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
