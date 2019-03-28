@@ -189,7 +189,7 @@ class GenericCollectionViewDataSource: NSObject, NSCollectionViewDataSource {
   var itemModels: [GenericCollectionItemModel]!
 
   func viewModel(indexPath: IndexPath) -> GenericCollectionItemModel {
-    return itemModels[indexPath.item]
+    return self.itemModels[indexPath.item]
   }
 
 
