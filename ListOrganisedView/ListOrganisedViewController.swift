@@ -75,12 +75,12 @@ open class ListOrganisedViewController: NSViewController {
   }
   
   
-  public func showViewFor(
+  public func showContent(
     modelObject: GenericCollectionItemModel,
     initialiseViewControllerForModel: () -> NSViewController,
     completionHandler: (NSViewController) -> ()) {
     
-    self.contentViewController.showViewFor(
+    self.contentViewController.showContent(
       modelObject: modelObject,
       initialiseViewControllerForModel: initialiseViewControllerForModel,
       completionHandler: completionHandler)

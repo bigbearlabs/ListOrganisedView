@@ -6,7 +6,7 @@ class ContentViewController: NSViewController {
   @IBOutlet var tabView: NSTabView!
   
   
-  func showViewFor(
+  func showContent(
     modelObject: GenericCollectionItemModel,
     initialiseViewControllerForModel: () -> NSViewController,
     completionHandler: (NSViewController) -> ()) {

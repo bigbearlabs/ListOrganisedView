@@ -61,7 +61,7 @@ extension ViewController {
     guard models.count < 2 else { fatalError() }
     guard let model = models.first as? CollectionItemModel else { return }
     
-    self.listOrganisedViewController.showViewFor(
+    self.listOrganisedViewController.showContent(
       modelObject: model,
       initialiseViewControllerForModel: {
         let viewControllerForModel = controllerFromStoryboard(
