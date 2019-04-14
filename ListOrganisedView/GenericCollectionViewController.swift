@@ -97,7 +97,7 @@ public class GenericCollectionViewController: NSViewController {
       let models = (collectionView.dataSource as! GenericCollectionViewDataSource).itemModels!
       
       let selectionIndices = newValue.compactMap { selectedModel in
-        models.index {
+        models.firstIndex {
           $0.isEqual(to: selectedModel)
         }
       }
