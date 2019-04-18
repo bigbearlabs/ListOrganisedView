@@ -36,7 +36,7 @@ public class GenericCollectionViewController: NSViewController {
       current: to,
       identifier: { model in model.id },
       areEqual: { a, b in
-        return "\(a.dictionaryRepresentation)" == "\(b.dictionaryRepresentation)"
+        return a.isEqual(to: b)
       })
     
     collectionView?.performBatchUpdates({
