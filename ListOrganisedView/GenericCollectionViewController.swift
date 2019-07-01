@@ -85,9 +85,13 @@ public class GenericCollectionViewController: NSViewController {
 
   public var selectedItemModels: [GenericCollectionItemModel] {
     get {
-      let indexes = self.collectionView!.selectionIndexPaths
+      guard let collectionView = self.collectionView else {
+        return []
+      }
+      
+      let indexes = collectionView.selectionIndexPaths
       let models = indexes.map {
-        (self.collectionView!.dataSource as! GenericCollectionViewDataSource).viewModel(indexPath: $0)
+        (collectionView.dataSource as! GenericCollectionViewDataSource).viewModel(indexPath: $0)
       }
 
       return models

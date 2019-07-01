@@ -59,7 +59,6 @@ open class ListOrganisedViewController: NSViewController {
   open override func viewWillAppear() {
     super.viewWillAppear()
     
-    setup(sidebarVc: self.sidebarCollectionViewController)
     setup(splitView: self.splitView)
   }
   
@@ -71,6 +70,7 @@ open class ListOrganisedViewController: NSViewController {
     sidebarVc.collectionItemNib = self.collectionItemNib
     sidebarVc.onSelect = self.onSelect
     sidebarVc.onDoubleClick = self.onDoubleClick
+    
     sidebarVc.itemModels = self.itemModels
   }
   
@@ -87,7 +87,11 @@ open class ListOrganisedViewController: NSViewController {
   }
   
   
-  var sidebarCollectionViewController: GenericCollectionViewController!
+  var sidebarCollectionViewController: GenericCollectionViewController! {
+    didSet {
+      self.setup(sidebarVc: self.sidebarCollectionViewController)
+    }
+  }
   
   var contentViewController: ContentViewController {
     return self.children.compactMap {
