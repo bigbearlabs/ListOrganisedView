@@ -9,13 +9,7 @@ open class ListOrganisedViewController: NSViewController {
   
   public var itemModels: [GenericCollectionItemModel] = [] {
     didSet {
-      sidebarCollectionViewController.itemModels = self.itemModels
-      
-      // select the first one by default.
-      if self.selectedItemModels.isEmpty,
-        let firstItemModel = self.itemModels.first {
-        self.selectedItemModels = [ firstItemModel ]
-      }
+      sidebarCollectionViewController.itemModels = self.itemModels      
     }
   }
   
@@ -60,6 +54,14 @@ open class ListOrganisedViewController: NSViewController {
     super.viewWillAppear()
     
     setup(splitView: self.splitView)
+    
+    setup(sidebarVc: self.sidebarCollectionViewController)
+    
+    // select the first item by default.
+    if self.selectedItemModels.isEmpty,
+      let firstItemModel = self.itemModels.first {
+      self.selectedItemModels = [ firstItemModel ]
+    }
   }
   
   func setup(splitView: NSSplitView) {
@@ -87,11 +89,7 @@ open class ListOrganisedViewController: NSViewController {
   }
   
   
-  var sidebarCollectionViewController: GenericCollectionViewController! {
-    didSet {
-      self.setup(sidebarVc: self.sidebarCollectionViewController)
-    }
-  }
+  var sidebarCollectionViewController: GenericCollectionViewController!
   
   var contentViewController: ContentViewController {
     return self.children.compactMap {
@@ -100,6 +98,7 @@ open class ListOrganisedViewController: NSViewController {
       .last!
   }
   
+
   open override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
     if let vc = segue.destinationController as? GenericCollectionViewController {
       self.sidebarCollectionViewController = vc

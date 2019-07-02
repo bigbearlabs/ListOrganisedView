@@ -62,8 +62,8 @@ public class GenericCollectionViewController: NSViewController {
 
   public var collectionItemNib: NSNib? {
     didSet {
-      self.collectionView?.register(
-        collectionItemNib!,
+      self.collectionView!.register(
+        self.collectionItemNib!,
         forItemWithIdentifier: NSUserInterfaceItemIdentifier(rawValue: GenericCollectionViewController.collectionItemIdentifier)
       )
     }
